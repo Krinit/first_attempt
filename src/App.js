@@ -4,6 +4,8 @@ import './App.css'
 import AppBar from './components/Header'
 import Home from './components/Home/Home'
 import SignIn from './components/Auth/SignIn'
+import NewsTable from './components/News/NewsTable'
+import Profile from './components/Profile/Profile'
 
 const App = () => (
         <BrowserRouter>
@@ -11,6 +13,8 @@ const App = () => (
                 <AppBar />
                 <Route path="/" exact component={Home}/>
                 <Route path="/signin" exact component={SignIn}/>
+                <Route path="/news" exact component={NewsTable}/>
+                <Route path="/profile" exact component={Profile}/>
             </div>
         </BrowserRouter>
 );
