@@ -25,10 +25,9 @@ const headlineStyle = {
 };
 const links = [
     {title: 'Signin', path: 'signin'},
-    {title: 'Signup', path: 'signup'},
     {title: 'Profile', path: 'profile'},
     {title: 'News', path: 'news'},
-    {title: 'Logout', path: 'logout  '},
+    {title: 'Logout', path: 'logout  '}
 ]
 
 const ButtonAppBar = (props) => {
