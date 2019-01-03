@@ -1,0 +1,3 @@
+export const LOGGING = {
+    LOG_SUCCESSFUL: 'LOG_SUCCESSFUL'
+}

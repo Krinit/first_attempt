@@ -1,7 +1,7 @@
 import React from 'react'
 import './Profile.css'
 import Tabs from './Tabs'
-import Grid from '@material-ui/core/Grid';
+import Grid from '@material-ui/core/Grid'
 
 const profile = () => {
     return (
