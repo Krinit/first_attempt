@@ -24,10 +24,8 @@ const headlineStyle = {
     'color': '#2cc18a'
 };
 const links = [
-    {title: 'Signin', path: 'signin'},
     {title: 'Profile', path: 'profile'},
-    {title: 'News', path: 'news'},
-    {title: 'Logout', path: 'logout  '}
+    {title: 'News', path: 'news'}
 ]
 
 const ButtonAppBar = (props) => {
