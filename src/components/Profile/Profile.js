@@ -5,10 +5,6 @@ import Tabs from './Tabs'
 import Grid from '@material-ui/core/Grid'
 
 class Profile extends React.Component{
-    componentDidMount() {
-        console.log(this.props.user)
-        console.log(this.props.isLoggedIn)
-    }
     render() {
         return (
             <div>
@@ -21,7 +17,7 @@ class Profile extends React.Component{
                     <Grid item xs={6}>
                         <Grid container direction='column'>
                             <Grid item xs={12}>
-                                <Tabs className='tabs'/>
+                                <Tabs newsItems={this.props.newsItems} className='tabs'/>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -31,9 +27,7 @@ class Profile extends React.Component{
     }
 }
 const mapStateToProps = store => ({
-    user: store.user,
-    isLoggedIn: store.isLoggedIn
+    newsItems: store.newsItems
 })
-
 
 export default connect(mapStateToProps)(Profile)

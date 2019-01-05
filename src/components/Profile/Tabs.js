@@ -52,8 +52,9 @@ class SimpleTabs extends React.Component {
                         <strong>Surname:</strong> McAlister<br/>
                         <strong>Age:</strong> 28 years<br/>
                         <strong>Birth place:</strong> NY<br/>
-                        <strong>Current place:</strong>Miami<br/>
-                        <strong>Relationship:</strong> Married to Asuna
+                        <strong>Current place:</strong> Miami<br/>
+                        <strong>Relationship:</strong> Married to Asuna<br/>
+                        <strong>Number of news` articles:</strong> {this.props.newsItems.length}
                 </TabContainer>}
                 {value === 1 && <TabContainer>
                     Believe or not, I`m fond of drinking. Really. But don`t try to seduce me by these cheap brands that are
