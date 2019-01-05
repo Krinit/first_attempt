@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {logSuccessful} from '../../Actions/LogActions';
+import ErrorSnackBar from '../Error'
+import {logSuccessful, errorShown, isFetching, isNotFetching, changeLoginValue, changePasswordValue} from '../../Actions/Actions';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -14,14 +15,11 @@ import "./SignIn.css"
 class SignIn extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            username: '',
-            password: '',
-            isFetching: false
-        }
+        this.state = {}
     }
     render() {
         return (
+            <div>
                 <Card className='card'>
                     <CardContent>
                         <Typography variant="display1">
@@ -29,27 +27,29 @@ class SignIn extends React.Component {
                         </Typography>
                                 <TextField
                                     label="Login"
-                                    value={this.state.username}
-                                    onChange={e => this.setState({username: e.target.value})}
+                                    defaultValue=''
+                                    onChange={e => this.props.changeLoginValue(e.target.value)}
                                     margin="normal"
                                     variant="outlined"
                                     fullWidth
                                 />
                                 <TextField
                                     label="Password"
-                                    value={this.state.password}
-                                    onChange={e => this.setState({password: +(e.target.value)})}
+                                    defaultValue=''
+                                    onChange={e => this.props.changePasswordValue(+e.target.value)}
                                     margin="normal"
                                     variant="outlined"
                                     fullWidth
                                 />
                     </CardContent>
                     <CardActions>
-                        {(this.state.isFetching) ? <CircularProgress/> :
-                            <Button variant="outlined" color='primary' onClick={() => {this.validateUser(this.state.username, this.state.password)}}>
+                        {this.props.isFetching ? <CircularProgress/> :
+                            <Button variant="outlined" color='primary' onClick={() => {this.validateUser(this.props.loginInput, this.props.passwordInput)}}>
                                 Login</Button>}
                     </CardActions>
                 </Card>
+                <ErrorSnackBar/>
+            </div>
         )
     }
     validateUser(username, password) {
@@ -57,29 +57,41 @@ class SignIn extends React.Component {
         const userFilter = loadS.filter((user) => {
             return (user.username === username && user.password === password) ? user : null
         })
-        console.log(this.props.isLoggedIn)
         if (userFilter.length > 0) {
             this.props.updateUser(userFilter[0])
-            this.setState({isFetching: true})
+            this.props.onFetching(true)
             const redirectToHome = () => {
-                this.setState({isFetching: false})
+                this.props.notFetching(false)
                 this.props.history.push("/profile")
             }
             setTimeout(redirectToHome, 3000)
         } else {
-            alert('Username or password is incorrect')
+            this.props.errorIsShown({
+                message:'Username or password is incorrect',
+                isShown: true})
         }
     }
 
 }
 
-const mapStateToProps = store => ({
-    user: store.user,
-    isLoggedIn: store.isLoggedIn
-})
+const mapStateToProps = store => {
+    return {
+        user: store.user,
+        isLoggedIn: store.isLoggedIn,
+        isFetching: store.isFetching,
+        loginInput: store.loginInput,
+        passwordInput: store.passwordInput
+    }
+}
+
 
 const mapDispatchToProps = dispatch => ({
-    updateUser: payload => dispatch(logSuccessful(payload))
+    updateUser: payload => dispatch(logSuccessful(payload)),
+    errorIsShown: payload => dispatch(errorShown(payload)),
+    onFetching: payload => dispatch(isFetching(payload)),
+    notFetching: (payload) => dispatch(isNotFetching(payload)),
+    changeLoginValue: (payload) => dispatch(changeLoginValue(payload)),
+    changePasswordValue: (payload) => dispatch(changePasswordValue(payload))
 })
 
 export default connect(

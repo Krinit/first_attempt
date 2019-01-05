@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
-import {logOut} from "../../Actions/LogActions";
+import {logOut} from "../../Actions/Actions";
 
 class Logout extends React.Component {
     render() {

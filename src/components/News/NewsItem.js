@@ -8,9 +8,11 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 
 function MediaCard(props) {
     return (
+        <div>
         <Card className='card'>
             <CardHeader title={props.title} />
             <CardActionArea>
@@ -32,8 +34,11 @@ function MediaCard(props) {
                     Learn More
                 </Button>
             </CardActions>
-            <CardHeader subheader={`you are signed in as ${props.username}`} />
         </Card>
+            <Paper elevation={1}>
+                <CardHeader subheader={`you are signed in as ${props.username}`} />
+            </Paper>
+        </div>
     );
 }
 
