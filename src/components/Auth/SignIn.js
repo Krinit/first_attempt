@@ -54,8 +54,12 @@ class SignIn extends React.Component {
     }
     validateUser(username, password) {
         let loadS = JSON.parse(localStorage.getItem('user'))
-        if (loadS.username === username && loadS.password === password) {
-            this.props.updateUser(loadS)
+        const userFilter = loadS.filter((user) => {
+            return (user.username === username && user.password === password) ? user : null
+        })
+        console.log(this.props.isLoggedIn)
+        if (userFilter.length > 0) {
+            this.props.updateUser(userFilter[0])
             this.setState({isFetching: true})
             const redirectToHome = () => {
                 this.setState({isFetching: false})
@@ -70,7 +74,8 @@ class SignIn extends React.Component {
 }
 
 const mapStateToProps = store => ({
-        user: store.user
+    user: store.user,
+    isLoggedIn: store.isLoggedIn
 })
 
 const mapDispatchToProps = dispatch => ({

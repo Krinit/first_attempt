@@ -13,10 +13,15 @@
 // };
 
 export const setUser = () => {
-    const person = {
-        username: "Admin",
-        password: 12345,
-        isLoggedIn: true
-    };
+    const person = [
+        {
+            username: "Admin",
+            password: 12345
+        },
+        {
+            username: "Admin2",
+            password: 54321
+        }
+    ]
     localStorage.setItem('user', JSON.stringify(person));
 }

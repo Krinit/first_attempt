@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 
 class App extends React.Component {
     render() {
-        const { user } = this.props
+        const { auth } = this.props
         return (
             <BrowserRouter>
                 <div className="App">
@@ -20,7 +20,7 @@ class App extends React.Component {
                         <Route path="/" exact component={Home}/>
                         <Route path="/signin" exact component={SignIn}/>
                         <Route path="/news" exact component={NewsTable}/>
-                        <PrivateRoute isLoggedIn={user.isLoggedIn} path="/profile" exact component={Profile}/>
+                        <PrivateRoute auth={auth} path="/profile" exact component={Profile}/>
                     </Switch>
                 </div>
             </BrowserRouter>
@@ -29,7 +29,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = store => ({
-    user: store.user
+    auth: store.isLoggedIn
 })
 
 

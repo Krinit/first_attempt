@@ -3,15 +3,15 @@ import {LOGGING} from '../Constants/Constants'
 export const initialState = {
     user: {
         username: '',
-        password: '',
-        isLoggedIn: false
-    }
+        password: ''
+    },
+    isLoggedIn: false
 }
 
 export function rootReducer(state = initialState, action) {
     switch (action.type) {
         case LOGGING.LOG_SUCCESSFUL:
-            return { ...state, user: action.payload }
+            return { ...state, user: action.payload, isLoggedIn: true }
         default:
             return state
     }
