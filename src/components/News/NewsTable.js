@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import NewsItem from './NewsItem'
 import Grid from '@material-ui/core/Grid';
 
@@ -43,8 +42,6 @@ function NewsList() {
         <div>
             <Grid  container
                    justify="space-around"
-                   xs={12}
-                   wrap
                    direction="row">
                 {newsItems.map((item, index) => (
                     <Grid item  key={index} xs={3} style={{'marginTop': '1%', 'marginLeft': '10px'}}>
@@ -56,8 +53,5 @@ function NewsList() {
     );
 }
 
-NewsList.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
 
 export default NewsList;

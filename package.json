@@ -2,9 +2,11 @@
   "name": "first_attempt",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://krinit.github.io/first",
   "dependencies": {
     "@material-ui/core": "^3.7.1",
     "@material-ui/icons": "^3.0.1",
+    "gh-pages": "^2.0.1",
     "material-auto-rotating-carousel": "^3.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './NewsItem.css'
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -38,8 +37,5 @@ function MediaCard(props) {
     );
 }
 
-MediaCard.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
 
 export default MediaCard;

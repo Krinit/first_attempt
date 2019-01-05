@@ -61,7 +61,7 @@ class SignIn extends React.Component {
                 this.setState({isFetching: false})
                 this.props.history.push("/profile")
             }
-            setTimeout(redirectToHome, 5000)
+            setTimeout(redirectToHome, 3000)
         } else {
             alert('Username or password is incorrect')
         }
